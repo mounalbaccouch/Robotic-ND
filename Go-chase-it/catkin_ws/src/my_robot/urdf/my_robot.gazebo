@@ -25,22 +25,6 @@
       <publishOdomTF>true</publishOdomTF>
     </plugin>
   </gazebo>
-  
-  <gazebo reference="chassis">
-    <material>Gazebo/Orange</material>
-  </gazebo>
-  
-  <gazebo reference="right_wheel">
-    <material>Gazebo/White</material>
-  </gazebo>
-  
-  <gazebo reference="left_wheel">
-    <material>Gazebo/White</material>
-  </gazebo>
-  
-  <gazebo reference="camera">
-    <material>Gazebo/Blue</material>
-  </gazebo>
 
   <!-- camera -->
   <gazebo reference="camera">

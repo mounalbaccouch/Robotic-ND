@@ -2,27 +2,15 @@
 
 <robot name="my_robot" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
-  <material name="orange">
-    <color rgba="${255/255} ${108/255} ${10/255} 1.0"/>
-  </material>
-  
-  <material name="blue">
-    <color rgba="0 0 0.8 1"/>
-  </material>
-  
-  <material name="white">
-    <color rgba="1 1 1 1"/>
-  </material>
-
-  <xacro:include filename="$(find my_robot)/urdf/my_robot.gazebo" />
   <link name="robot_footprint"></link>
-  
+  <xacro:include filename="$(find my_robot)/urdf/my_robot.gazebo" />
+
   <joint name="robot_footprint_joint" type="fixed">
     <origin xyz="0 0 0" rpy="0 0 0" />
     <parent link="robot_footprint"/>
     <child link="chassis" />
   </joint>
-
+  
   <link name='chassis'>
     <pose>0 0 0.1 0 0 0</pose>
 
@@ -41,7 +29,6 @@
       <geometry>
         <box size=".4 .2 .1"/>
       </geometry>
-      <material name="orange"/>
     </collision>
 
     <visual name='chassis_visual'>
@@ -49,7 +36,6 @@
       <geometry>
         <box size=".4 .2 .1"/>
       </geometry>
-      <material name="orange"/>
     </visual>
 
 
@@ -82,7 +68,9 @@
     </visual>
 
   </link>
-  
+  <gazebo reference='chassis'>
+	<material>Gazebo/Red</material>
+  </gazebo> 
   
   <link name='left_wheel'>
     <pose>0 0 0.1 0 0 0</pose>
@@ -102,7 +90,6 @@
       <geometry>
         <cylinder radius="0.1" length="0.05"/>
       </geometry>
-      <material name="white"/>
     </collision>
 
     <visual name='left_wheel_visual'>
@@ -110,10 +97,13 @@
       <geometry>
         <cylinder radius="0.1" length="0.05"/>
       </geometry>
-      <material name="white"/>
     </visual>
 
   </link>
+  
+  <gazebo reference='left_wheel'>
+	<material>Gazebo/Green</material>
+  </gazebo> 
   
   <joint type="continuous" name="left_wheel_hinge">
     <origin xyz="0 0.15 0" rpy="0 0 0"/>
@@ -142,7 +132,6 @@
       <geometry>
         <cylinder radius="0.1" length="0.05"/>
       </geometry>
-      <material name="white"/>
     </collision>
 
     <visual name='right_wheel_visual'>
@@ -150,10 +139,13 @@
       <geometry>
         <cylinder radius="0.1" length="0.05"/>
       </geometry>
-      <material name="white"/>
     </visual>
 
   </link>
+  
+  <gazebo reference='right_wheel'>
+	<material>Gazebo/Green</material>
+  </gazebo> 
   
   <joint type="continuous" name="right_wheel_hinge">
     <origin xyz="0 -0.15 0" rpy="0 0 0"/>
@@ -180,20 +172,22 @@
     <collision name='camera_collision'>
       <origin xyz="0 0 0" rpy=" 0 0 0"/> 
       <geometry>
-        <box size="0.05 0.05 0.05"/>
+        <box size="0.01 0.05 0.05"/>
       </geometry>
-      <material name="blue"/>
     </collision>
 
     <visual name='camera_visual'>
       <origin xyz="0 0 0" rpy=" 0 0 0"/> 
       <geometry>
-        <box size="0.05 0.05 0.05"/>
+        <box size="0.01 0.05 0.05"/>
       </geometry>
-      <material name="blue"/>
     </visual>
 
   </link>
+  
+  <gazebo reference='camera'>
+	<material>Gazebo/Black</material>
+  </gazebo> 
   
   <joint type="fixed" name="camera_joint">
     <origin xyz="0.2 0 0" rpy="0 0 0"/>
@@ -241,5 +235,10 @@
     <limit effort="10000" velocity="1000"/>
     <dynamics damping="1.0" friction="1.0"/>
   </joint>
+  
+<gazebo>
+  <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+  </plugin>
+</gazebo>
   
 </robot>
