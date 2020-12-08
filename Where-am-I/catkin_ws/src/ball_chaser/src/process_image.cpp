@@ -59,11 +59,6 @@ void process_image_callback(const sensor_msgs::Image img)
 			drive_robot(0.0, -0.5);
 			ROS_INFO("DriveToTargetRequest received - moving to the right side");
 		}
-		else
-		{
-			drive_robot(0.0, 0.0);
-			ROS_INFO("DriveToTargetRequest received - stop moving");
-		}
     }
 }
 
