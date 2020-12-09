@@ -32,4 +32,14 @@ roslaunch my_robot amcl.launch
 source devel/setup.bash
 rosrun teleop_twist_keyboard teleop_twist_keyboard.py
 ```
+## Test case ##
+To do the test, I used the package ball_chaser. In another terminal, launch this command to launch the ball_chaser node:
+```
+source devel/setup.bash
+roslaunch ball_chaser ball_chaser.launch
+```
+This is a screenshot of the test:
 
+<p align="center">
+<img src="animations/amcl.gif" width="500"/>
+</p>
