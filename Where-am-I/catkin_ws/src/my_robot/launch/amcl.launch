@@ -10,6 +10,7 @@
 	
 	<param name="initial_pose_x" value="-0.45"/>
 	<param name="initial_pose_y" value="-0.02"/>
+	<param name="initial_pose_a" value="-0.9"/>
 	</node>
 	
 	<node name="move_base" pkg="move_base" type="move_base" respawn="false" output="screen">
