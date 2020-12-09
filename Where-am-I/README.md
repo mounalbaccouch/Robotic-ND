@@ -1,30 +1,35 @@
 # Go-chaise-it
 
-This is the second project of the Udacity's Nanodegree: robotic software engineer.
-In this project, we are asked to build a robot that can chaise a ball using camera and Lidar sensor using ROS, to visualize it in a Gazebo simulation and to visualize sensors data in RViz simulator.
-F mourain functionalities of ROS are explored:
+This is the third project of the Udacity's Nanodegree: robotic software engineer.
+In this project, we are asked to localize the robot using AMCL node inside a generated map.
 
-- creating ROS nodes
-- communicating using topics and services
-- integrating Gazebo object and world
-- integrating RViz simulator
+Adaptive Monte Carlo Localization (AMCL) dynamically adjusts the number of particles over a period of time, as the robot navigates around in a map. This adaptive process offers a significant computational advantage over MCL.
+This project is a clone of the previous project Go-chase-it where we were asked to build a robot that can chaise a ball using camera and Lidar sensor.
+
+To do this, the main steps are:
+
+- creating the amcl launch file and integrate the nodes: amcl, move_base and map_server
+- generate a map of the environnement using pgm_map_creator package
+- adding the teleop_twist_keyboard to test the localization
 
 ## Building and running ##
-Run the following commands to run the robot inside its world:
+- Run the following commands to run the robot inside its world:
 ```
-git clone https://github.com/mounalbaccouch/Go-chaise-it
-cd Go-chaise-it/catkin_ws
+git clone https://github.com/mounalbaccouch/Robotic-ND/
+cd Robotic-ND/Where-am-I/catkin_ws/
 catkin_make
 source devel/setup.bash
 roslaunch my_robot world.launch
 ```
-In another terminal, run the following command to run "drive_bot" and "process_image" nodes:
+- Use the saved RViz config config.rviz
+- In another terminal, run the following command to run the "amcl" node:
 ```
 source devel/setup.bash
-roslaunch ball_chaser ball_chaser.launch
+roslaunch my_robot amcl.launch
 ```
-In another terminal, run the following command to visualize the robot’s camera images:
+- In another terminal, run the teleop package to see the robot localizing itself while moving:
 ```
 source devel/setup.bash
-rosrun rqt_image_view rqt_image_view 
+rosrun teleop_twist_keyboard teleop_twist_keyboard.py
 ```
+
