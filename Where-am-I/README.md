@@ -1,4 +1,4 @@
-# Go-chaise-it
+# Where-amI
 
 This is the third project of the Udacity's Nanodegree: robotic software engineer.
 In this project, we are asked to localize the robot using AMCL node inside a generated map.
