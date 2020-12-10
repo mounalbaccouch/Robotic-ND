@@ -38,8 +38,15 @@ To do the test, I used the package ball_chaser. In another terminal, launch this
 source devel/setup.bash
 roslaunch ball_chaser ball_chaser.launch
 ```
-This is a screenshot of the test:
+These are screenshots of the test:
+- initial pose:
 
 <p align="center">
-<img src="animations/amcl.gif" width="800"/>
+<img src="animations/initialpose.png" width="800"/>
+</p>
+
+- final pose:
+
+<p align="center">
+<img src="animations/finalpose.png" width="800"/>
 </p>
